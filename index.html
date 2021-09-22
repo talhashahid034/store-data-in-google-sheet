@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title> Old phone data</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <form name="google-sheet">
+        <div class="box">
+            <div class="ficon"> 
+                <h1> Add Data</h1>
+            </div>
+            <div class="data-box">
+                <select name="mobilename" > 
+                    <option value="not provide">Mobile Name</option>
+                    <option value="OPPO">OPPO</option>
+                    <option value="VIVO">VIVO</option>
+                    <option value="INFLIEX">INFLIEX</option>
+                    <option value="NOKIA">NOKIA</option>
+                    <option value="SUMSUNG">SUMSUNG</option>
+                    <option value="I PHONE">I PHONE</option>
+                    <option value="ITEL">ITEL</option>
+                    <option value="TACKNO">TACKNO</option>
+                    <option value="CHAINA PHONE">CHAINA PHONE </option>
+                </select>
+                <input type="text" name="mobile model" placeholder="mobile model">
+                <input type="text" name="mobile IMEI No 1" placeholder="mobile IMEI No 1">
+                <input type="text" name="mobile IMEI No 2" placeholder="mobile IMEI No 2">
+                <input type="text" name="Id Card No" placeholder="Id Card No">
+
+                New<input type="radio" name="condition" value="New">
+                Used<input type="radio" name="condition" value="Used">
+
+                
+               <textarea name="address" placeholder="Address" style="width: 100%; margin-top: 10px;"></textarea>
+               
+               <input type="datetime" name="dateandtime" placeholder="date and time" style="width: 100%; margin-top: 10px; height: 30px;">
+
+               <input type="file" name="image" value="image" >
+
+                <input class="btn" type="submit" name="submit">
+                <input class="btn" type="reset" name="">
+
+            </div>
+
+        </div>
+    </form>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbys9zR1S76Cq3gaHRQK_xEn8T1D2EEK3SQwiPepGBU1SdLWpNSCOK4Ksz5RhTDoTPuwBg/exec'
+        const form = document.forms['google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("Data Add Successfully"))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+    </body>
+</html>
